@@ -13,6 +13,12 @@ use Rex::Commands::File;
 
 use Rex::Helper::Rexfile::ParamLookup;
 
+eval {
+  # For Rex > 1
+  use Rex::Commands::Template;
+  use Rex::Commands::Task;
+};
+
 task "setup", sub {
   my $ensure = param_lookup "ensure", "latest";
   my $cron_template = param_lookup "cron_template",
